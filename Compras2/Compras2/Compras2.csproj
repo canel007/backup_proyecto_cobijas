@@ -77,7 +77,6 @@
       <DependentUpon>fr_Recepcion de producto.cs</DependentUpon>
     </Compile>
     <Compile Include="funciones.cs" />
-    <Compile Include="funciones_canel.cs" />
     <Compile Include="MDI.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/***************************************************************
+FECHA: GUATEMALA 12 DE NOVIEMBRE 2013
+CREADOR: GUILLERMO CANEL 0901-09-12084- UMG
+
+***************************************************************/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +20,7 @@ namespace Compras2
         public fr_Recepcion_de_producto()
         {
             InitializeComponent();
+            fun.ActivarDesactivarControlesT(panel2, "D");
         }
 
         DBConnect db = new DBConnect(Properties.Settings.Default.odbc);
@@ -64,26 +70,46 @@ namespace Compras2
             Dictionary<string, string> dica = new Dictionary<string, string>();
             if (cadena.Equals("Materia Prima"))
             {
-           
+
+                foreach (DataGridViewRow fila in dg_Detalle.Rows)
+                {                    
+                    String cantidad = fila.Cells["Cantidad"].Value.ToString();
+                    String codigoprod = fila.Cells["codproducto"].Value.ToString();
+                    dica.Add("cantidad", cantidad);
+                    dica.Add("idtbm_bodega", tx_Bodega.Text.ToString());
+                    dica.Add("idtbm_producto", codigoprod.ToString());
+                    //insertar a la bd.
+                    a=db.insertar("tbt_inventario_producto", dica);
+                    dica.Clear();
+                    
+
+                }
+            }
+            else
+            {
                 foreach (DataGridViewRow fila in dg_Detalle.Rows)
                 {
-                    Console.WriteLine("Bien");
-                    String cantidad=fila.Cells["Cantidad"].Value.ToString();
-                    String codigoprod=fila.Cells["codproducto"].Value.ToString();
-                    dica.Add("cantidad",cantidad);
-                    dica.Add("idtbm_bodega",tx_Bodega.Text);
-                    dica.Add("idtbm_producto",codigoprod.ToString());
+                    String cantidad = fila.Cells["Cantidad"].Value.ToString();
+                    String codigoprod = fila.Cells["codproducto"].Value.ToString();
+                    dica.Add("cantidad", cantidad);
+                    dica.Add("idtbm_bodega", tx_Bodega.Text.ToString());
+                    dica.Add("idproducto_finalizado", codigoprod.ToString());
                     //insertar a la bd.
-                    //a=db.insertar("tbt_inventario_producto", dica);
+                    a = db.insertar("tbt_inventario_producto_finalizado", dica);
                     dica.Clear();
-                    if (a == 0)
-                    {
-                        error = true;
-                        db.terminar_transaccion(error);
-                    }
-                    
-                }                
-            }            
+
+
+                }
+
+
+            }
+
+
+            fun.ActivarDesactivarControlesT(panel2, "D");
+        }
+        private void barra1_click_nuevo_button()
+        {
+            fun.ActivarDesactivarControlesT(panel2, "A");
             
         }
 
@@ -122,18 +148,20 @@ namespace Compras2
                 dict1.Clear();
                
                 dg_Detalle.DataSource = db.consulta_DataGridView(query);
-                //dg_Detalle.Columns[0].Visible = false;
-                //dg_Detalle.Columns[1].Visible = false;
+                dg_Detalle.Columns[0].Visible = false;
+                dg_Detalle.Columns[1].Visible = false;
             }
             else if (tipocompra.Equals("Producto Finalizado"))
             {
-                string query = "select tt.idtbm_bodega as codbodega, tt.idproducto_finalizado as codproducto, t.nombre_producto_finalizado as Producto, tt.cantidad as Cantidad, t.Precio as Precio, (tt.cantidad*t.Precio) as Subtotal from tbt_detalle_compra_producto_finalizado tt inner join producto_finalizado t on tt.idproducto_finalizado=t.idproducto_finalizado where tt.no_compra=" + No;
+                //reprogramar
+
+                string query = "select tt.idtbm_bodega as codbodega, tt.id_producto_finalizado as codproducto, t.nombre_producto_finalizado as Producto, tt.cantidad as Cantidad, t.Precio_producto_finalizado as Precio, (tt.cantidad*t.Precio_producto_finalizado) as Subtotal from tbt_detalle_compra_producto_finalizado tt inner join tbm_producto_finalizado t on tt.id_producto_finalizado=t.id_producto_finalizado where tt.no_compra=" + No;
                 dg_Detalle.DataSource = db.consulta_DataGridView(query);
 
                 String query2 = "select idtbm_bodega as nobodega,fecha_compra as fechaemitida from tbm_compra where no_compra=" + No;
                 dict1 = db.consultar_un_registro(query2);
-                //dg_Detalle.Columns[0].Visible = false;
-                //dg_Detalle.Columns[1].Visible = false;
+                dg_Detalle.Columns[0].Visible = false;
+                dg_Detalle.Columns[1].Visible = false;
                 tx_Bodega.Text = dict1["nobodega"].ToString();                
                 tx_Fechaemitida.Text = dict1["fechaemitida"].ToString();
                 dict1.Clear();
@@ -166,6 +194,8 @@ namespace Compras2
             cb_Ordencompra.DisplayMember = "no_compra";
             cb_Ordencompra.ValueMember = "no_compra";      
         }
+
+
 
        
         

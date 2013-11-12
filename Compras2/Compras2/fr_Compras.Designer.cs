@@ -60,6 +60,7 @@
             this.tab_Ingreso = new System.Windows.Forms.TabPage();
             this.tab_Consulta = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_Detalle)).BeginInit();
@@ -67,6 +68,7 @@
             this.tab_Ingreso.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tx_Fecha
@@ -78,7 +80,7 @@
             // 
             // bt_Agregar
             // 
-            this.bt_Agregar.Location = new System.Drawing.Point(441, 3);
+            this.bt_Agregar.Location = new System.Drawing.Point(449, 4);
             this.bt_Agregar.Name = "bt_Agregar";
             this.bt_Agregar.Size = new System.Drawing.Size(63, 31);
             this.bt_Agregar.TabIndex = 1;
@@ -94,7 +96,7 @@
             "Producto Finalizado"});
             this.cb_Tipocompra.Location = new System.Drawing.Point(103, 58);
             this.cb_Tipocompra.Name = "cb_Tipocompra";
-            this.cb_Tipocompra.Size = new System.Drawing.Size(121, 21);
+            this.cb_Tipocompra.Size = new System.Drawing.Size(175, 21);
             this.cb_Tipocompra.TabIndex = 2;
             this.cb_Tipocompra.SelectionChangeCommitted += new System.EventHandler(this.cb_Tipocompra_SelectionChangeCommitted);
             // 
@@ -103,7 +105,7 @@
             this.cb_Proveedor.FormattingEnabled = true;
             this.cb_Proveedor.Location = new System.Drawing.Point(103, 94);
             this.cb_Proveedor.Name = "cb_Proveedor";
-            this.cb_Proveedor.Size = new System.Drawing.Size(121, 21);
+            this.cb_Proveedor.Size = new System.Drawing.Size(175, 21);
             this.cb_Proveedor.TabIndex = 3;
             // 
             // cb_Tipopago
@@ -111,7 +113,7 @@
             this.cb_Tipopago.FormattingEnabled = true;
             this.cb_Tipopago.Location = new System.Drawing.Point(103, 129);
             this.cb_Tipopago.Name = "cb_Tipopago";
-            this.cb_Tipopago.Size = new System.Drawing.Size(121, 21);
+            this.cb_Tipopago.Size = new System.Drawing.Size(175, 21);
             this.cb_Tipopago.TabIndex = 4;
             // 
             // cb_Bodega
@@ -119,7 +121,7 @@
             this.cb_Bodega.FormattingEnabled = true;
             this.cb_Bodega.Location = new System.Drawing.Point(383, 46);
             this.cb_Bodega.Name = "cb_Bodega";
-            this.cb_Bodega.Size = new System.Drawing.Size(121, 21);
+            this.cb_Bodega.Size = new System.Drawing.Size(140, 21);
             this.cb_Bodega.TabIndex = 5;
             // 
             // cb_Moneda
@@ -127,7 +129,7 @@
             this.cb_Moneda.FormattingEnabled = true;
             this.cb_Moneda.Location = new System.Drawing.Point(383, 83);
             this.cb_Moneda.Name = "cb_Moneda";
-            this.cb_Moneda.Size = new System.Drawing.Size(121, 21);
+            this.cb_Moneda.Size = new System.Drawing.Size(140, 21);
             this.cb_Moneda.TabIndex = 6;
             // 
             // lb_Tipocompra
@@ -202,7 +204,7 @@
             this.panel1.Controls.Add(this.lb_Tipocompra);
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(523, 167);
+            this.panel1.Size = new System.Drawing.Size(566, 167);
             this.panel1.TabIndex = 13;
             // 
             // tx_Nocompra
@@ -210,7 +212,7 @@
             this.tx_Nocompra.Enabled = false;
             this.tx_Nocompra.Location = new System.Drawing.Point(404, 17);
             this.tx_Nocompra.Name = "tx_Nocompra";
-            this.tx_Nocompra.Size = new System.Drawing.Size(100, 20);
+            this.tx_Nocompra.Size = new System.Drawing.Size(119, 20);
             this.tx_Nocompra.TabIndex = 14;
             // 
             // lb_nocompra
@@ -231,13 +233,13 @@
             this.panel2.Controls.Add(this.bt_Agregar);
             this.panel2.Location = new System.Drawing.Point(6, 179);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(523, 38);
+            this.panel2.Size = new System.Drawing.Size(566, 38);
             this.panel2.TabIndex = 14;
             // 
             // lb_Cantidad
             // 
             this.lb_Cantidad.AutoSize = true;
-            this.lb_Cantidad.Location = new System.Drawing.Point(216, 16);
+            this.lb_Cantidad.Location = new System.Drawing.Point(255, 13);
             this.lb_Cantidad.Name = "lb_Cantidad";
             this.lb_Cantidad.Size = new System.Drawing.Size(62, 13);
             this.lb_Cantidad.TabIndex = 4;
@@ -246,7 +248,7 @@
             // lb_Producto
             // 
             this.lb_Producto.AutoSize = true;
-            this.lb_Producto.Location = new System.Drawing.Point(19, 20);
+            this.lb_Producto.Location = new System.Drawing.Point(3, 13);
             this.lb_Producto.Name = "lb_Producto";
             this.lb_Producto.Size = new System.Drawing.Size(50, 13);
             this.lb_Producto.TabIndex = 3;
@@ -254,7 +256,7 @@
             // 
             // tx_Cantidad
             // 
-            this.tx_Cantidad.Location = new System.Drawing.Point(301, 13);
+            this.tx_Cantidad.Location = new System.Drawing.Point(325, 9);
             this.tx_Cantidad.Name = "tx_Cantidad";
             this.tx_Cantidad.Size = new System.Drawing.Size(118, 20);
             this.tx_Cantidad.TabIndex = 2;
@@ -264,7 +266,7 @@
             this.cb_Producto.FormattingEnabled = true;
             this.cb_Producto.Location = new System.Drawing.Point(63, 9);
             this.cb_Producto.Name = "cb_Producto";
-            this.cb_Producto.Size = new System.Drawing.Size(141, 21);
+            this.cb_Producto.Size = new System.Drawing.Size(186, 21);
             this.cb_Producto.TabIndex = 0;
             // 
             // dg_Detalle
@@ -287,7 +289,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dg_Detalle.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dg_Detalle.Location = new System.Drawing.Point(0, 223);
+            this.dg_Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dg_Detalle.Location = new System.Drawing.Point(0, 0);
             this.dg_Detalle.Name = "dg_Detalle";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -297,7 +300,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dg_Detalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dg_Detalle.Size = new System.Drawing.Size(510, 209);
+            this.dg_Detalle.Size = new System.Drawing.Size(566, 209);
             this.dg_Detalle.TabIndex = 15;
             this.dg_Detalle.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dg_Detalle_RowsAdded);
             this.dg_Detalle.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dg_Detalle_RowsRemoved);
@@ -338,20 +341,20 @@
             this.tab_Contenedor1.Location = new System.Drawing.Point(12, 56);
             this.tab_Contenedor1.Name = "tab_Contenedor1";
             this.tab_Contenedor1.SelectedIndex = 0;
-            this.tab_Contenedor1.Size = new System.Drawing.Size(550, 496);
+            this.tab_Contenedor1.Size = new System.Drawing.Size(586, 496);
             this.tab_Contenedor1.TabIndex = 19;
             // 
             // tab_Ingreso
             // 
+            this.tab_Ingreso.Controls.Add(this.panel3);
             this.tab_Ingreso.Controls.Add(this.panel1);
             this.tab_Ingreso.Controls.Add(this.lb_Total);
             this.tab_Ingreso.Controls.Add(this.panel2);
             this.tab_Ingreso.Controls.Add(this.tx_Total);
-            this.tab_Ingreso.Controls.Add(this.dg_Detalle);
             this.tab_Ingreso.Location = new System.Drawing.Point(4, 22);
             this.tab_Ingreso.Name = "tab_Ingreso";
             this.tab_Ingreso.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Ingreso.Size = new System.Drawing.Size(542, 470);
+            this.tab_Ingreso.Size = new System.Drawing.Size(578, 470);
             this.tab_Ingreso.TabIndex = 0;
             this.tab_Ingreso.Text = "Ingresos";
             this.tab_Ingreso.UseVisualStyleBackColor = true;
@@ -375,11 +378,19 @@
             this.dataGridView1.Size = new System.Drawing.Size(519, 358);
             this.dataGridView1.TabIndex = 0;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dg_Detalle);
+            this.panel3.Location = new System.Drawing.Point(6, 223);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(566, 209);
+            this.panel3.TabIndex = 19;
+            // 
             // fr_Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 554);
+            this.ClientSize = new System.Drawing.Size(606, 554);
             this.Controls.Add(this.tab_Contenedor1);
             this.Controls.Add(this.barra1);
             this.Name = "fr_Compras";
@@ -394,6 +405,7 @@
             this.tab_Ingreso.PerformLayout();
             this.tab_Consulta.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -429,6 +441,7 @@
         private System.Windows.Forms.TabPage tab_Ingreso;
         private System.Windows.Forms.TabPage tab_Consulta;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 

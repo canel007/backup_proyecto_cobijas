@@ -1,4 +1,9 @@
-﻿using System;
+﻿/***************************************************************
+FECHA: GUATEMALA 12 DE NOVIEMBRE 2013
+CREADOR: GUILLERMO CANEL 0901-09-12084- UMG
+
+***************************************************************/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +22,10 @@ namespace Compras2
         {
             InitializeComponent();
             iniciar();
+            fun.ActivarDesactivarControlesT(panel1, "D");
+            fun.ActivarDesactivarControlesT(panel2, "D");
+            fun.ActivarDesactivarControlesT(panel3, "D");
+            tx_Cantidad.Text = "0";
         }
         DBConnect db = new DBConnect(Properties.Settings.Default.odbc);
         Dictionary<string, string> d;
@@ -68,6 +77,12 @@ namespace Compras2
                 tab_Contenedor1.Focus();
             }
 
+            fun.ActivarDesactivarControlesT(panel1, "A");
+            fun.ActivarDesactivarControlesT(panel2, "A");
+            fun.ActivarDesactivarControlesT(panel3, "A");
+            tx_Nocompra.Enabled = false;
+            
+
             d = db.consultar_un_registro("select MAX(no_compra) as 'No' from tbm_compra");
             if (d["No"] != "")
             {
@@ -76,7 +91,7 @@ namespace Compras2
             }
             else
             {
-                Nocompra++;
+                Nocompra=1;
                 Console.WriteLine("else");
             }
 
@@ -106,6 +121,9 @@ namespace Compras2
             {
                 insertar_detalle_materia_prima_y_finalizado(2,Nocompra, id_bodega, cantidad, idproducto);
             }
+            tx_Cantidad.Text = "0";
+            tx_Cantidad.Focus();
+            fun.ActivarDesactivarControlesT(panel1, "D");            
         }
 
         private void dg_Detalle_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -114,7 +132,7 @@ namespace Compras2
         }
         private void dg_Detalle_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            tx_Total.Text = fun.f2_sum_column(dg_Detalle, "Subtotal");
+            tx_Total.Text = fun.f1_sum_column(dg_Detalle, "Subtotal");
         }
 
         private void barra1_click_guardar_button()
@@ -127,6 +145,10 @@ namespace Compras2
             {
                 llenado_informacion(2, dg_Detalle, Nocompra, id_bodega);                
             }
+            fun.ActivarDesactivarControlesT(panel1, "D");
+            fun.ActivarDesactivarControlesT(panel2, "D");
+            fun.ActivarDesactivarControlesT(panel3, "D");
+            dg_Detalle.Columns.Clear();
         }
         
         private void barra1_click_actualizar_button()
@@ -155,7 +177,7 @@ namespace Compras2
 
                     columna.Name = encabezados[i];
                     if (i <= 2)
-                        columna.Visible = true; //convertirlo en false
+                        columna.Visible = false; //convertirlo en false
                     dg_Detalle.Columns.Add(columna);
                 }
 
@@ -175,7 +197,7 @@ namespace Compras2
                     columna = new DataGridViewTextBoxColumn();
                     columna.Name = encabezados[i];
                     if (i <= 2)
-                        columna.Visible = true; //convertirlo en false
+                        columna.Visible = false; //convertirlo en false
                     dg_Detalle.Columns.Add(columna);
                 }
 
@@ -188,7 +210,7 @@ namespace Compras2
             if (opcion == 1)
                 query = "select nombre_producto as 'nombre',  costo_producto as 'costo' from tbm_producto where id_producto=" + idproducto;
             if (opcion == 2)
-                query = "select nombre_producto_finalizado as 'nombre', precio as 'costo' from producto_finalizado where id_producto_finalizado=" + idproducto;
+                query = "select nombre_producto_finalizado as 'nombre', precio_producto_finalizado as 'costo' from tbm_producto_finalizado where id_producto_finalizado=" + idproducto;
            
             String nombreProducto = null;
             String costo = null;
@@ -260,10 +282,7 @@ namespace Compras2
                     dictio.Add("cantidad", cant_producto);
                     dictio.Add("id_producto", id_producto);
                     db.insertar("tbt_detalle_compra_materia_prima", dictio);
-                    dictio.Remove("no_compra");
-                    dictio.Remove("idtbm_bodega");
-                    dictio.Remove("cantidad");
-                    dictio.Remove("id_producto");
+                    dictio.Clear();
 
                 }
                 else if ((opcion == 2))
@@ -273,25 +292,9 @@ namespace Compras2
                     dictio.Add("cantidad", cant_producto);
                     dictio.Add("id_producto_finalizado", id_producto);
                     db.insertar("tbt_detalle_compra_producto_finalizado", dictio);
-                    dictio.Remove("no_compra");
-                    dictio.Remove("idtbm_bodega");
-                    dictio.Remove("cantidad");
-                    dictio.Remove("id_producto_finalizado");
-
+                    dictio.Clear();
                 }
-                else if (opcion == 3)
-                {
-
-                    dictio.Add("no_compra", sno_compra);
-                    dictio.Add("idtbm_bodega", sid_bodega);
-                    dictio.Add("idtbm_servicio", id_producto);
-                    dictio.Add("costo", cant_producto);
-                    db.insertar("tbt_detalle_compra_servicio", dictio);
-                    dictio.Remove("no_compra");
-                    dictio.Remove("idtbm_bodega");
-                    dictio.Remove("idtbm_servicio");
-                    dictio.Remove("costo");
-                }
+                
             }
 
         }

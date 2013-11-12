@@ -1,4 +1,12 @@
-﻿using System;
+﻿/***************************************************************
+FECHA: GUATEMALA 12 DE NOVIEMBRE 2013
+CREADOR: GUILLERMO CANEL 0901-09-12084- UMG
+DESCRIPCIÓN: FUNCIONES PARA LOS FORMULARIOS
+
+***************************************************************/
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,34 +17,6 @@ namespace Compras2
 {
     class funciones
     {
-
- 
-        public void llenado_informacion(DataGridView tabla,int no_compra,int id_bodega)
-        {
-            Dictionary<int ,int> d = new Dictionary<int,int>();
-            foreach (DataGridViewRow fila in tabla.Rows)
-            {
-                int codigo =Convert.ToInt32(fila.Cells["idproducto"].Value.ToString());
-                int cantidad=Convert.ToInt32(fila.Cells["CANTIDAD"].Value.ToString());
-                if (d.ContainsKey(codigo))
-                {
-                    int value = d[codigo];
-                    d[codigo] = value + cantidad;
-                    Console.WriteLine(d[codigo]);
-                  
-               
-                }
-                else
-                {
-                    d.Add(codigo,cantidad);                    
-                }
-            }
-            foreach (var info in d)
-            {
-                int id_producto = info.Key;
-                int cant_producto = info.Value;
-            }
-        }   
         public String f2_sum_column(DataGridView dataGridView, String nombreColumna)
         {
             var formato = System.Globalization.CultureInfo.GetCultureInfo("es-GT");
@@ -64,35 +44,74 @@ namespace Compras2
             retorno = string.Format(formato, "{0:0.0000}", suma);
             return retorno;
         }
-        public Double Double_conversion(String valor)
-        {
-            var formato = System.Globalization.CultureInfo.GetCultureInfo("es-GT");
-            double nuevo = double.Parse(valor, formato);
-            return nuevo;
-        }
-        public String String_conversion(Double valor)
-        {
-            var formato = System.Globalization.CultureInfo.GetCultureInfo("es-GT");
-            String nuevo = string.Format(formato, "{0:0.0000}", valor);
-            return nuevo;
-        }
 
-    public String multiplicacion(String cantidad,double valor)
-    {
-       var formato = System.Globalization.CultureInfo.GetCultureInfo("es-GT");
-       double multiplicacion = double.Parse(cantidad, formato);
-        String retorno = string.Format(formato, "{0:0.0000}",multiplicacion);
-        Console.WriteLine(retorno);
-        Console.WriteLine("..........");
-        return retorno;
-    }
 
         public void color_tabla(DataGridView datagridview)
         {
             datagridview.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGreen;
         }
 
+        //**************************************************************************************************
+        public void ActivarDesactivarControlesT(Control panel,String opcion)
+        {
+            if (opcion.Equals("D"))
+            {
+                foreach (Control controles in panel.Controls)
+                {
+                    if (controles is TextBox)
+                    {
+                        controles.Enabled = false;
+                    }
+                    if (controles is ComboBox)
+                    {
+                        controles.Enabled = false;
+                    }
+                    if (controles is DataGridView)
+                    {
+                        controles.Enabled = false;
+                    }
+                    if (controles is DateTimePicker)
+                    {
+                        controles.Enabled = false;
+                    }
+                    if (controles is Button)
+                    {
+                        controles.Enabled = false;
+                    }
+                }
+            }
+            else if (opcion.Equals("A"))
+            {
+                foreach (Control controles in panel.Controls)
+                {
+                    if (controles is TextBox)
+                    {
+                        controles.Enabled = true;
+                    }
+                    if (controles is ComboBox)
+                    {
+                        controles.Enabled = true;
+                    }
+                    if (controles is DataGridView)
+                    {
+                        controles.Enabled = true;
+                    }
+                    if (controles is DateTimePicker)
+                    {
+                        controles.Enabled = true;
+                    }
+                    if (controles is Button)
+                    {
+                        controles.Enabled = true;
+                    }
+                }
+            }
+        }
 
+
+
+
+        //**************************************************************************************************
         public int estado_insercion(Control panel)
         {
             int estado = 0; //no hay campos vacios
