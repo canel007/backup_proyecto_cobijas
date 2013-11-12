@@ -30,15 +30,15 @@
         {
             this.barra1 = new Navegador.Barra();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tx_fechavencimiento = new System.Windows.Forms.DateTimePicker();
-            this.lb_Fechavencimiento = new System.Windows.Forms.Label();
             this.tx_Fechaemitida = new System.Windows.Forms.TextBox();
+            this.lb_Bodega = new System.Windows.Forms.Label();
             this.lb_Fechaemitida = new System.Windows.Forms.Label();
             this.tx_Bodega = new System.Windows.Forms.TextBox();
-            this.lb_Bodega = new System.Windows.Forms.Label();
             this.tx_Total = new System.Windows.Forms.TextBox();
             this.lb_Total = new System.Windows.Forms.Label();
             this.dg_Detalle = new System.Windows.Forms.DataGridView();
+            this.tx_fechavencimiento = new System.Windows.Forms.DateTimePicker();
+            this.lb_Fechavencimiento = new System.Windows.Forms.Label();
             this.cb_Ordencompra = new System.Windows.Forms.ComboBox();
             this.cb_Tipoproducto = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -74,34 +74,27 @@
             this.panel1.Size = new System.Drawing.Size(676, 361);
             this.panel1.TabIndex = 1;
             // 
-            // tx_fechavencimiento
-            // 
-            this.tx_fechavencimiento.Location = new System.Drawing.Point(438, 31);
-            this.tx_fechavencimiento.Name = "tx_fechavencimiento";
-            this.tx_fechavencimiento.Size = new System.Drawing.Size(200, 20);
-            this.tx_fechavencimiento.TabIndex = 12;
-            // 
-            // lb_Fechavencimiento
-            // 
-            this.lb_Fechavencimiento.AutoSize = true;
-            this.lb_Fechavencimiento.Location = new System.Drawing.Point(279, 37);
-            this.lb_Fechavencimiento.Name = "lb_Fechavencimiento";
-            this.lb_Fechavencimiento.Size = new System.Drawing.Size(152, 13);
-            this.lb_Fechavencimiento.TabIndex = 11;
-            this.lb_Fechavencimiento.Text = "Fecha de Vencimiento Factura";
-            // 
             // tx_Fechaemitida
             // 
             this.tx_Fechaemitida.Enabled = false;
             this.tx_Fechaemitida.Location = new System.Drawing.Point(362, 61);
             this.tx_Fechaemitida.Name = "tx_Fechaemitida";
-            this.tx_Fechaemitida.Size = new System.Drawing.Size(162, 20);
+            this.tx_Fechaemitida.Size = new System.Drawing.Size(279, 20);
             this.tx_Fechaemitida.TabIndex = 10;
+            // 
+            // lb_Bodega
+            // 
+            this.lb_Bodega.AutoSize = true;
+            this.lb_Bodega.Location = new System.Drawing.Point(58, 64);
+            this.lb_Bodega.Name = "lb_Bodega";
+            this.lb_Bodega.Size = new System.Drawing.Size(44, 13);
+            this.lb_Bodega.TabIndex = 7;
+            this.lb_Bodega.Text = "Bodega";
             // 
             // lb_Fechaemitida
             // 
             this.lb_Fechaemitida.AutoSize = true;
-            this.lb_Fechaemitida.Location = new System.Drawing.Point(282, 64);
+            this.lb_Fechaemitida.Location = new System.Drawing.Point(242, 64);
             this.lb_Fechaemitida.Name = "lb_Fechaemitida";
             this.lb_Fechaemitida.Size = new System.Drawing.Size(74, 13);
             this.lb_Fechaemitida.TabIndex = 9;
@@ -110,19 +103,10 @@
             // tx_Bodega
             // 
             this.tx_Bodega.Enabled = false;
-            this.tx_Bodega.Location = new System.Drawing.Point(163, 61);
+            this.tx_Bodega.Location = new System.Drawing.Point(122, 61);
             this.tx_Bodega.Name = "tx_Bodega";
             this.tx_Bodega.Size = new System.Drawing.Size(100, 20);
             this.tx_Bodega.TabIndex = 8;
-            // 
-            // lb_Bodega
-            // 
-            this.lb_Bodega.AutoSize = true;
-            this.lb_Bodega.Location = new System.Drawing.Point(113, 62);
-            this.lb_Bodega.Name = "lb_Bodega";
-            this.lb_Bodega.Size = new System.Drawing.Size(44, 13);
-            this.lb_Bodega.TabIndex = 7;
-            this.lb_Bodega.Text = "Bodega";
             // 
             // tx_Total
             // 
@@ -150,10 +134,26 @@
             this.dg_Detalle.Size = new System.Drawing.Size(545, 235);
             this.dg_Detalle.TabIndex = 4;
             // 
+            // tx_fechavencimiento
+            // 
+            this.tx_fechavencimiento.Location = new System.Drawing.Point(278, 38);
+            this.tx_fechavencimiento.Name = "tx_fechavencimiento";
+            this.tx_fechavencimiento.Size = new System.Drawing.Size(319, 20);
+            this.tx_fechavencimiento.TabIndex = 12;
+            // 
+            // lb_Fechavencimiento
+            // 
+            this.lb_Fechavencimiento.AutoSize = true;
+            this.lb_Fechavencimiento.Location = new System.Drawing.Point(42, 38);
+            this.lb_Fechavencimiento.Name = "lb_Fechavencimiento";
+            this.lb_Fechavencimiento.Size = new System.Drawing.Size(152, 13);
+            this.lb_Fechavencimiento.TabIndex = 11;
+            this.lb_Fechavencimiento.Text = "Fecha de Vencimiento Factura";
+            // 
             // cb_Ordencompra
             // 
             this.cb_Ordencompra.FormattingEnabled = true;
-            this.cb_Ordencompra.Location = new System.Drawing.Point(139, 30);
+            this.cb_Ordencompra.Location = new System.Drawing.Point(499, 9);
             this.cb_Ordencompra.Name = "cb_Ordencompra";
             this.cb_Ordencompra.Size = new System.Drawing.Size(121, 21);
             this.cb_Ordencompra.TabIndex = 3;
@@ -165,16 +165,16 @@
             this.cb_Tipoproducto.Items.AddRange(new object[] {
             "Materia Prima",
             "Producto Finalizado"});
-            this.cb_Tipoproducto.Location = new System.Drawing.Point(139, 3);
+            this.cb_Tipoproducto.Location = new System.Drawing.Point(160, 3);
             this.cb_Tipoproducto.Name = "cb_Tipoproducto";
-            this.cb_Tipoproducto.Size = new System.Drawing.Size(121, 21);
+            this.cb_Tipoproducto.Size = new System.Drawing.Size(177, 21);
             this.cb_Tipoproducto.TabIndex = 2;
             this.cb_Tipoproducto.SelectionChangeCommitted += new System.EventHandler(this.cb_Tipoproducto_SelectionChangeCommitted);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 37);
+            this.label2.Location = new System.Drawing.Point(358, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 13);
             this.label2.TabIndex = 1;
@@ -183,7 +183,7 @@
             // lb_Tipoproducto
             // 
             this.lb_Tipoproducto.AutoSize = true;
-            this.lb_Tipoproducto.Location = new System.Drawing.Point(40, 11);
+            this.lb_Tipoproducto.Location = new System.Drawing.Point(14, 12);
             this.lb_Tipoproducto.Name = "lb_Tipoproducto";
             this.lb_Tipoproducto.Size = new System.Drawing.Size(74, 13);
             this.lb_Tipoproducto.TabIndex = 0;
@@ -199,7 +199,7 @@
             this.panel2.Controls.Add(this.cb_Ordencompra);
             this.panel2.Location = new System.Drawing.Point(24, 61);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(670, 67);
+            this.panel2.Size = new System.Drawing.Size(670, 73);
             this.panel2.TabIndex = 13;
             // 
             // fr_Recepcion_de_producto

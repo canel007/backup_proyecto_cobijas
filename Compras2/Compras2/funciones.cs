@@ -12,7 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
-
+using ODBCConnect;
+using Navegador;
 namespace Compras2
 {
     class funciones
@@ -52,6 +53,35 @@ namespace Compras2
         }
 
         //**************************************************************************************************
+        public void desactivarLibropaginas(TabControl libro)
+        {
+            foreach (TabPage pagina in libro.TabPages)
+            {
+                pagina.UseVisualStyleBackColor = false;
+                pagina.BackColor = Color.Transparent;
+            }
+        }
+
+        public void Letras(Form formulario)
+        {
+            foreach (Control controles in formulario.Controls)            
+            {
+                if (controles is DataGridView)
+                {
+                    controles.Font = new Font("Microsoft Sans Serif", 7, FontStyle.Regular);
+                }
+                else
+                if ((controles is DateTimePicker))
+                {
+                    controles.Font = new Font("Microsoft Sans Serif", 7, FontStyle.Regular);
+                }
+                else
+                if (!(controles is Barra))
+                {
+                 controles.Font = new Font("Microsoft Sans Serif", 9, FontStyle.Bold);
+                }
+            }
+        }
         public void ActivarDesactivarControlesT(Control panel,String opcion)
         {
             if (opcion.Equals("D"))
@@ -61,6 +91,7 @@ namespace Compras2
                     if (controles is TextBox)
                     {
                         controles.Enabled = false;
+                        
                     }
                     if (controles is ComboBox)
                     {
@@ -87,6 +118,7 @@ namespace Compras2
                     if (controles is TextBox)
                     {
                         controles.Enabled = true;
+                        
                     }
                     if (controles is ComboBox)
                     {

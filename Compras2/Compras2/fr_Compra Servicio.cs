@@ -20,6 +20,7 @@ namespace Compras2
         {
             InitializeComponent();
             iniciar();
+            fun.Letras(this);
             fun.ActivarDesactivarControlesT(panel1, "D");
             
         }

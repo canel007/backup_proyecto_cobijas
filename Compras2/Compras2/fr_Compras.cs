@@ -22,10 +22,13 @@ namespace Compras2
         {
             InitializeComponent();
             iniciar();
+            fun.Letras(this);
+            fun.desactivarLibropaginas(tabControl1);
             fun.ActivarDesactivarControlesT(panel1, "D");
             fun.ActivarDesactivarControlesT(panel2, "D");
             fun.ActivarDesactivarControlesT(panel3, "D");
             tx_Cantidad.Text = "0";
+            tx_Total.Enabled = false;
         }
         DBConnect db = new DBConnect(Properties.Settings.Default.odbc);
         Dictionary<string, string> d;
@@ -71,12 +74,10 @@ namespace Compras2
         }
         private void barra1_click_nuevo_button()
         {
-            if (tab_Contenedor1.SelectedIndex != 0)
+            if (tabControl1.SelectedIndex != 0)
             {
-                tab_Contenedor1.SelectedIndex = 0;
-                tab_Contenedor1.Focus();
+                tabControl1.SelectedIndex = 0;
             }
-
             fun.ActivarDesactivarControlesT(panel1, "A");
             fun.ActivarDesactivarControlesT(panel2, "A");
             fun.ActivarDesactivarControlesT(panel3, "A");
@@ -154,7 +155,21 @@ namespace Compras2
         private void barra1_click_actualizar_button()
         {
             iniciar();
-        }   
+        }
+        private void barra1_click_buscar_button()
+        {
+            if (tabControl1.SelectedIndex != 1)
+            {
+                tabControl1.SelectedIndex = 1;             
+            }
+            string query = "select t.no_compra No_Compra,t.fecha_compra Fecha_Emitida,b.nombre_bodega Bodega,m.nombre_moneda Moneda,tc.nombre_tipo_compra Tipo_Compra,p.nombre_proveedor Proveedor";
+            query += " from tbm_compra t, tbm_bodega b, tbm_moneda m, tbm_tipo_compra tc, tbm_proveedor p";
+            query += " where t.idtbm_bodega=b.idtbm_bodega and t.idtbm_moneda=m.idtbm_moneda and t.idtbm_tipo_compra=tc.idtbm_tipo_compra and t.idtbm_proveedor=p.idtbm_proveedor";
+            query += " and tc.idtbm_tipo_compra<> 3";
+
+            dg_detallebuscar.DataSource = db.consulta_DataGridView(query);
+            
+        }
 //----------------------------------------------------------------------------------------------------------
         public void detalle(String tcompra) //TERMINADO
         {
@@ -298,6 +313,12 @@ namespace Compras2
             }
 
         }
+
+        
+
+        
+
+        
 
        
 

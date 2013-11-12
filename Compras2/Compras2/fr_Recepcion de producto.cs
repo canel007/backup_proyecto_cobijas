@@ -20,6 +20,7 @@ namespace Compras2
         public fr_Recepcion_de_producto()
         {
             InitializeComponent();
+            fun.Letras(this);
             fun.ActivarDesactivarControlesT(panel2, "D");
         }
 

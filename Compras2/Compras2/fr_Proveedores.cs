@@ -19,6 +19,8 @@ namespace Compras2
         public fr_Proveedores()
         {
             InitializeComponent();
+            fun.Letras(this);
+            this.fun.desactivarLibropaginas(this.tabControl1);
             fun.ActivarDesactivarControlesT(this.panel1,"D");
         }
         DBConnect db = new DBConnect(Properties.Settings.Default.odbc);
@@ -42,6 +44,11 @@ namespace Compras2
 
         private void barra1_click_nuevo_button()
         {
+            if (tabControl1.SelectedIndex != 0)
+            {
+                tabControl1.SelectedIndex = 0;
+            }
+
             fun.ActivarDesactivarControlesT(panel1, "A");
             tx_Registro.Enabled = false;
 
@@ -59,6 +66,17 @@ namespace Compras2
             tx_Registro.Text = nuevoregistro.ToString();
 
             
+        }
+
+        private void barra1_click_buscar_button()
+        {
+            if (tabControl1.SelectedIndex != 1)
+            {
+                tabControl1.SelectedIndex = 1;
+            }
+            string query = "select idtbm_proveedor as Codigo, nombre_proveedor as Proveedor, telefono_nombre_proveedor as Telefono, direccion_nombre_proveedor as Direccion from tbm_proveedor";
+            dg_Detallebuscar.DataSource = db.consulta_DataGridView(query);
+
         }
     }
 }
